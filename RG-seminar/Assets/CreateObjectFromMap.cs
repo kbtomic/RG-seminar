@@ -6,6 +6,8 @@ using System.IO;
 
 public class CreateObjectFromMap : MonoBehaviour
 {
+    public Texture2D mapTexture;
+   
     //43.51293893730756 (ULat), 16.434653728432924 (ULong) gornja liva
     //43.51175528819933(LLAT), 16.435623998944898(LLong) donja desna
     public class Map
@@ -48,6 +50,7 @@ public class CreateObjectFromMap : MonoBehaviour
         public float LeftLowerEdgeY { get; set; }
         public float TranslationOfLeftLowerEdgeX { get; set; }
         public float TranslationOfLeftLowerEdgeY { get; set; }
+        public Texture2D Texture { get; set; }
 
         public void CreateObjectMap(Map map)
         {
@@ -63,17 +66,16 @@ public class CreateObjectFromMap : MonoBehaviour
 
             this.CalculateTranslationXY(objectMap, initialLowerEdgeX, initialLowerEdgeY);
 
-            //put real map as texture on game object map
-            Texture2D texture = new Texture2D(128, 128);
-            var fileData = File.ReadAllBytes("C:/StariPlac.png");
-            texture.LoadImage(fileData);
-            Color[] pix = texture.GetPixels(); // get pixel colors
-            for (int i = 0; i < pix.Length; i++)
-                pix[i].a = pix[i].grayscale; // set the alpha of each pixel to the grayscale value
-            texture.SetPixels(pix); // set changed pixel alphas
-            texture.Apply(); // upload texture to GPU
-            objectMap.GetComponent<Renderer>().material.mainTexture = texture;
-
+            ////put real map in png format as texture on game object map
+            //Texture2D texture = new Texture2D(128, 128);
+            //var fileData = File.ReadAllBytes("C:/StariPlac.png");
+            //texture.LoadImage(fileData);
+            //Color[] pix = texture.GetPixels(); // get pixel colors
+            //for (int i = 0; i < pix.Length; i++)
+            //    pix[i].a = pix[i].grayscale; // set the alpha of each pixel to the grayscale value
+            //texture.SetPixels(pix); // set changed pixel alphas
+            //texture.Apply(); // upload texture to GPU
+            //objectMap.GetComponent<Renderer>().material.mainTexture = texture;
 
         }
 
@@ -507,11 +509,14 @@ public class CreateObjectFromMap : MonoBehaviour
         Debug.Log(objectMap.TranslationOfLeftLowerEdgeX);
         Debug.Log(objectMap.TranslationOfLeftLowerEdgeY);
 
+        objectMap.Texture = mapTexture;
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

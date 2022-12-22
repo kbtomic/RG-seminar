@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 2110240942}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: MapObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,3 +345,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2752a4f6e5edbcf479cdb671a9826b09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapTexture: {fileID: 0}
